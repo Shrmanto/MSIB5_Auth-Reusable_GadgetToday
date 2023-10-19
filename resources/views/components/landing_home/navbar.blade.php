@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg d-flex">
     <div class="container">
-        <a class="navbar-brand" href="#">GG<span>Today</span></a>
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="" width="100">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             {{-- <span class="navbar-toggler-icon"></span> --}}
             <i class="fa-solid fa-ellipsis"></i>
@@ -31,5 +33,6 @@
                 </a>
             </div>
         </div>
+        <a href="{{route('logout')}}" type="button" class="btn btn-primary">logout</a>
     </div>
 </nav>

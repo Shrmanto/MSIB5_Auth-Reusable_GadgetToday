@@ -1,74 +1,59 @@
-<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #227C9D;">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-      <div class="sidebar-brand-icon">
-        <img src="{{asset('assets/img/logo.png')}}" width="70%" alt="">
-      </div>
-      <div class="sidebar-brand-text" style="margin-right: 1rem;">BooksWorld</div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-      <a class="nav-link" href="">
-      <i class="fa-solid fa-gauge" style="color: #ffffff;"></i>
-        <span>Dashboard</span></a>
-    </li>
-
-    <hr class="sidebar-divider my-0">
-
-    <!-- <p class="text-muted nav-heading mb-0 mx-auto mt-3">
-      <span style="color: #ffffff;">Users</span>
-    </p> -->
-    <!-- <li class="nav-item">
-      <a class="nav-link" href="">
-      <i class="fa-solid fa-user" style="color: #ffffff;"></i>
-        <span>Admin</span></a>
-    </li> -->
-    <li class="nav-item">
-      <a class="nav-link" href="">
-      <i class="fa-solid fa-users" style="color: #ffffff;"></i>
-        <span>Peminjam</span></a>
-    </li>
-    <hr class="sidebar-divider my-0">
-
-    <!-- <p class="text-muted nav-heading mb-0 mx-auto mt-3">
-      <span style="color: #ffffff;">Users</span>
-    </p> -->
-    <li class="nav-item">
-      <a class="nav-link" href="">
-        <i class="fa-solid fa-bookmark" style="color: #ffffff;"></i>
-        <span>Kategori Buku</span></a>
-      </li>
-    <li class="nav-item">
-      <a class="nav-link" href=">
-        <i class="fa-solid fa-book" style="color: #ffffff;"></i>
-        <span>Buku</span></a>
-    </li>
-
-        <hr class="sidebar-divider my-0">
-
-    <li class="nav-item">
-      <a class="nav-link" href="">
-        <i class="fa-solid fa-receipt" style="color: #ffffff;"></i>
-      <span>Peminjaman</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="">
-      <i class="fa-solid fa-file" style="color: #ffffff;"></i>
-      <span>Reporting Peminjaman</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+<!-- Sidebar Start -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+        <div class="brand-logo d-flex align-items-center justify-content-xl-center justify-content-md-between">
+            <a href="#" class="mt-3 text-xl-center logo-img">
+                <img src="{{asset('assets/img/logo.png')}}" width="180" alt="">
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="fa-solid fa-xmark fa-2xl"></i>
+            </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Home</span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                        <span>
+                            <i class="fa-solid fa-house-chimney fa-lg"></i>
+                        </span>
+                        <span class="hide-menu">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Menu</span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="javascript:void(0);" data-toggle="collapse" data-target="#ui-dropdown" aria-expanded="false">
+                        <span>
+                            <i class="fa-solid fa-newspaper fa-lg"></i>
+                            {{-- <i class="fa-solid fa-mobile-screen-button fa-lg"></i> --}}
+                        </span>
+                        <span class="hide-menu">News</span>
+                    </a>
+                    <ul id="ui-dropdown" class="sidebar-submenu collapse">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('categories') }}">
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('article') }}">
+                                <span>Article</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
     </div>
-
-
-  </ul>
+    <!-- End Sidebar scroll-->
+</aside>
+<!--  Sidebar End -->

@@ -40,25 +40,28 @@ Route::prefix('auth')->group(function (){
     Route::get('/logout', [AuthController::class,'logout'])->middleware('auth')->name('logout');
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'admin'])->name('admin.dashboard');
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::middleware(['auth', 'role:admin'])->group(function () {
+        Route::get('/dashboard', [HomeController::class, 'admin'])->name('admin.dashboard');
 
-    Route::prefix('cms')->group(function (){
-        Route::prefix('category')->group(function () {
-            Route::get('/categories', [CategoriesController::class, 'index'])->name('categories');
-        });
+        Route::prefix('cms')->group(function (){
+            Route::prefix('category')->group(function () {
+                Route::get('/categories', [CategoriesController::class, 'index'])->name('categories');
+            });
 
-        Route::prefix('article')->group(function () {
-            Route::get('/article', [ArticleController::class, 'index'])->name('article');
-            Route::post('/article', [ArticleController::class, 'store'])->name('article.store');
-            Route::put('/article/{id}', [ArticleController::class, 'update'])->name('article.update');
-            Route::delete('/article/delete/{id}', [ArticleController::class, 'destroy'])->name('article.delete');
+            Route::prefix('article')->group(function () {
+                Route::get('/article', [ArticleController::class, 'index'])->name('article');
+                Route::post('/article', [ArticleController::class, 'store'])->name('article.store');
+                Route::put('/article/{id}', [ArticleController::class, 'update'])->name('article.update');
+                Route::delete('/article/delete/{id}', [ArticleController::class, 'destroy'])->name('article.delete');
+            });
+
         });
 
     });
 
+    Route::middleware(['auth', 'role:user'])->group(function () {
+        Route::get('/home', [HomeController::class, 'index'])->name('user.home');
+    });
 });
 
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('user.home');
-});

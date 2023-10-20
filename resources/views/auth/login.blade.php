@@ -69,6 +69,8 @@
                 </div>
             </div>
         </div>
+        {{-- @if (session('session_expired'))
+        @endif --}}
     </div>
 
   <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>

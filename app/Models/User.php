@@ -45,10 +45,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // protected function role(): Attribute
-    // {
-    //     return new Attribute(
-    //         get: fn ($value) =>  ["admin", "user"][$value],
-    //     );
-    // }
+    public function article()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

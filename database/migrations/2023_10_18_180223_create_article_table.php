@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('categories_id');
             $table->text('description');
+            $table->unsignedBigInteger('writer_id');
             $table->timestamps();
-
             $table->foreign('categories_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('writer_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -12,11 +12,11 @@
 
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         {{-- Sidebar Start --}}
-        @include('components.dashboard.sidebar')
+        @include('components.user.dashboard.sidebar')
         {{-- Sidebar end --}}
 
         <div class="body-wrapper">
-            @include('components.dashboard.header')
+            @include('components.user.dashboard.header')
 
             <div class="container-fluid">
                 @yield('content')

@@ -32,7 +32,7 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard');
             }
             elseif(auth()->user()->role == 'user'){
-                return redirect()->route('user.home');
+                return redirect()->route('user.dashboard');
             };
         };
     }

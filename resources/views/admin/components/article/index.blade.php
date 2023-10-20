@@ -1,4 +1,4 @@
-@extends('Userdashboard')
+@extends('admin.dashboard')
 
 @section('content')
 <div id="main">
@@ -6,9 +6,6 @@
     <!-- <div class="card"> -->
         <h2 class="mb-3" style="font-weight: 800; font-size: 3rem">Article List</h2>
         <!-- <div class="card-body"> -->
-            <a href="{{ route('article') }}" class="btn btn btn-outline-primary mb-3 shadow-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Add Data<i class="ms-2 fa-sharp fa-solid fa-plus"></i>
-            </a>
 
             <div class="card shadow-sm">
                 <table class="table table-hover">
@@ -33,7 +30,7 @@
                                 </td>
                                 <td>{{ $at->categories->name_categories }}</td>
                                 <td>{{ Str::limit($at->description, 30) }}</td>
-                                <td>{{ $at->created_at }}</td>
+                                <td>{{ $at->users->name }}</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate{{ $at->id }}">
                                         <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>

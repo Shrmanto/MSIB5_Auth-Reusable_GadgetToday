@@ -4,25 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Categories;
+use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // User Action Start
+
     public function index()
     {
         $article = Article::all();
         $categories = Categories::all();
         return view('article.index', compact('article', 'categories'));
     }
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -51,14 +50,12 @@ class ArticleController extends Controller
 
         $article->description = $request->input('description');
         $article->categories_id = $request->input('categories_id');
+        $article->writer_id = Auth::id();
         $article->save();
 
         return redirect()->route('article');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Article $article,string $id)
     {
         // dd('oke');
@@ -88,14 +85,12 @@ class ArticleController extends Controller
 
         $article->description = $request->input('description');
         $article->categories_id = $request->input('categories_id');
+        $article->writer_id = Auth::id();
         $article->update();
 
         return redirect()->route('article');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         // dd('oke');
@@ -103,4 +98,18 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('article');
     }
+
+    // User Action End
+
+    // Admin Action Start
+
+    public function indexAdmin()
+    {
+        $user = User::all();
+        $article = Article::all();
+        $categories = Categories::all();
+        return view('admin.components.article.index', compact('user' ,'article', 'categories'));
+    }
+
+    // Admin Action End
 }

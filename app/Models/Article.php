@@ -15,6 +15,7 @@ class Article extends Model
         'image',
         'categories_id',
         'description',
+        'writer_id',
     ];
 
     public function categories()

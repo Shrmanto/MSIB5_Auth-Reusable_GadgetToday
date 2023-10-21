@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -27,7 +28,21 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name_categories' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $categories = new Categories();
+        $categories->name_categories = $request->input('name_categories');
+        $categories->save();
+
+        return redirect()->route('categories.admin');
     }
 
     /**
@@ -35,7 +50,21 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name_categories' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $categories = Categories::findOrFail($id);
+        $categories->name_categories = $request->input('name_categories');
+        $categories->update();
+
+        return redirect()->route('categories.admin');
     }
 
     /**
@@ -43,6 +72,8 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categories = Categories::findOrFail($id);
+        $categories->delete();
+        return redirect()->route('categories.admin');
     }
 }

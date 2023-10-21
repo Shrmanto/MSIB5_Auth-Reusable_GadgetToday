@@ -51,11 +51,14 @@ Route::middleware(['web', 'auth'])->group(function () {
                 Route::get('/writer', [WriterController::class, 'index'])->name('writer');
             });
 
-            Route::prefix('category')->group(function () {
+            Route::prefix('categories')->group(function () {
                 Route::get('/categories', [CategoriesController::class, 'indexAdmin'])->name('categories.admin');
+                Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
+                Route::put('/categories/{id}', [CategoriesController::class, 'update'])->name('categories.update');
+                Route::delete('/categories/delete/{id}', [CategoriesController::class, 'destroy'])->name('categories.delete');
             });
 
-            Route::prefix('article')->group(function () {
+            Route::prefix('articles')->group(function () {
                 Route::get('/article', [ArticleController::class, 'indexAdmin'])->name('article.admin');
             });
 

@@ -60,6 +60,16 @@
                                 <span>Article</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="#">
+                                <span>Latest News</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="#">
+                                <span>Recommended News</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

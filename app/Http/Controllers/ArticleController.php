@@ -105,10 +105,9 @@ class ArticleController extends Controller
 
     public function indexAdmin()
     {
-        $user = User::all();
-        $article = Article::all();
+        $article = Article::with('user')->get();
         $categories = Categories::all();
-        return view('admin.components.article.index', compact('user' ,'article', 'categories'));
+        return view('admin.components.article.index', compact('article', 'categories'));
     }
 
     // Admin Action End

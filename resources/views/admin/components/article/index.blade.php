@@ -30,7 +30,7 @@
                                 </td>
                                 <td>{{ $at->categories->name_categories }}</td>
                                 <td>{{ Str::limit($at->description, 30) }}</td>
-                                <td>{{ $at->users->name }}</td>
+                                <td>{{ $at->user ? $at->user->name : 'N/A' }}</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate{{ $at->id }}">
                                         <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>

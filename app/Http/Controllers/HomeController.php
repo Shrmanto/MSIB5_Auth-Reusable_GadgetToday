@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,12 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $users = User::all();
         $categories = Categories::all();
-        return view('Userdashboard', compact('categories'));
+        return view('Userdashboard', compact('users', 'categories'));
     }
 
     public function admin()
     {
-        return view('admin.dashboard');
+        $users = User::all();
+        return view('admin.dashboard', compact('users'));
     }
 }

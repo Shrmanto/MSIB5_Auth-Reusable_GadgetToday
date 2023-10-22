@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WriterController;
 use App\Models\Categories;
 use Illuminate\Database\Query\IndexHint;
@@ -46,6 +47,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/dashboard', [HomeController::class, 'admin'])->name('admin.dashboard');
 
+        Route::put('/profile/{id}', [ProfileController::class, 'updateAdmin'])->name('profile.update');
+
         Route::prefix('cms')->group(function (){
             Route::prefix('writer')->group(function () {
                 Route::get('/writer', [WriterController::class, 'index'])->name('writer');
@@ -67,6 +70,8 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/home', [HomeController::class, 'index'])->name('user.dashboard');
+
+        Route::put('/profile/{id}', [ProfileController::class, 'updateUser'])->name('profile.update');
 
         Route::prefix('category')->group(function () {
             Route::get('/categories', [CategoriesController::class, 'indexUser'])->name('categories');

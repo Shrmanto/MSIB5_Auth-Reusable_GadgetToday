@@ -17,7 +17,8 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $article = Article::all();
+        $user = auth()->user();
+        $article = Article::where('writer_id', $user->id)->get();
         $categories = Categories::all();
         return view('article.index', compact('article', 'categories'));
     }

@@ -32,12 +32,16 @@
                                 <td>{{ Str::limit($at->description, 30) }}</td>
                                 <td>{{ $at->user ? $at->user->name : 'N/A' }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate{{ $at->id }}">
-                                        <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropDelete{{ $at->id }}">
-                                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-                                    </a>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Choose
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropView{{ $at->id }}">Preview</a></li>
+                                            <li><a class="dropdown-item" href="#">Latest News</a></li>
+                                            <li><a class="dropdown-item" href="#">Recommend News</a></li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -49,9 +53,7 @@
 
         <!-- </div> -->
     <!-- </div> -->
-    @include('article.modal.create')
-    @include('article.modal.update')
-    @include('article.modal.delete')
+    @include('admin.components.article.modal.preview')
 
 </div>
 @endsection

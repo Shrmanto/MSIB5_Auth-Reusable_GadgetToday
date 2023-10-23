@@ -28,4 +28,14 @@ class Article extends Model
         return $this->belongsTo(User::class, 'writer_id');
     }
 
+    public function latestNews()
+    {
+        return $this->hasMany(LatestNews::class);
+    }
+
+    public function recommendNews()
+    {
+        return $this->hasMany(RecommendNews::class);
+    }
+
 }

@@ -8,13 +8,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h1>{{ $item->article_name }}</h1>
-                <div class="categories d-flex">
+                <h1 class="mb-3">{{ $item->article_name }}</h1>
+                <div class="categories d-flex mb-3">
                     <h5 class="badge text-bg-danger">{{ $item->categories->name_categories }}</h5>
                     <h5 class="badge text-bg-warning mx-3">{{ $item->user->name }}</h5>
                     <h5 class="badge text-bg-success">{{ $item->created_at }}</h5>
                 </div>
-                <img src="{{ asset('images/article/'. $at->image) }}" alt="image" class="img-thumbnail">
+                <img src="{{ asset('images/article/'. $at->image) }}" alt="image" class="img-thumbnail mb-3">
                 <p>{{ $item->description }}</p>
             </div>
         </div>

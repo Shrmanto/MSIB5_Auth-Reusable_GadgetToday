@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ManageContentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WriterController;
 use App\Models\Categories;
@@ -63,6 +64,14 @@ Route::middleware(['web', 'auth'])->group(function () {
 
             Route::prefix('articles')->group(function () {
                 Route::get('/article', [ArticleController::class, 'indexAdmin'])->name('article.admin');
+            });
+
+            Route::prefix('Manage-Content')->group(function () {
+                Route::get('/latest-news', [ManageContentController::class, 'LatestNews'])->name('latest-news');
+                Route::post('/latest-news/{id}', [ManageContentController::class, 'storeLatestNews'])->name('latest-news.add');
+
+                Route::get('/recommend-news', [ManageContentController::class, 'RecommendNews'])->name('recommend-news');
+                Route::post('/recommend-news/{id}', [ManageContentController::class, 'storeRecommendNews'])->name('recommend-news.add');
             });
 
         });

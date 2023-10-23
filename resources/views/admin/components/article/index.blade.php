@@ -38,8 +38,18 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="#" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropView{{ $at->id }}">Preview</a></li>
-                                            <li><a class="dropdown-item" href="#">Latest News</a></li>
-                                            <li><a class="dropdown-item" href="#">Recommend News</a></li>
+                                            <li>
+                                                <form method="POST" action="{{ route('latest-news.add', ['id' => $at->id]) }}">
+                                                    @csrf
+                                                    <button class="dropdown-item" type="submit">Latest News</button>
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <form action="{{ route('recommend-news.add', ['id' => $at->id]) }}" method="POST">
+                                                    @csrf
+                                                    <button class="dropdown-item" type="submit">Recommend News</button>
+                                                </form>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>

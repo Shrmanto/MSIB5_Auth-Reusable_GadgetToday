@@ -61,12 +61,12 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="#">
+                            <a class="sidebar-link" href="{{ route('latest-news') }}">
                                 <span>Latest News</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="#">
+                            <a class="sidebar-link" href="{{ route('recommend-news') }}">
                                 <span>Recommended News</span>
                             </a>
                         </li>

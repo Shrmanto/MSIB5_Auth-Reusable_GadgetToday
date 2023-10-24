@@ -40,7 +40,9 @@
                                     <td>N/A</td>
                                 @endif
                                 <td>
-                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <a href="#" class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropDelete{{ $ln->id }}">
+                                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -48,6 +50,7 @@
                 </table>
             </div>
             {{-- {{ $categories->Links() }} --}}
+            @include('admin.components.latest-news.modal.delete')
 
 
         <!-- </div> -->

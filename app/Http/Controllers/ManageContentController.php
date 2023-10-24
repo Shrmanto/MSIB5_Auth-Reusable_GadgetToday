@@ -39,6 +39,13 @@ class ManageContentController extends Controller
         return redirect()->back();
     }
 
+    public function destroyLatestNews(string $id)
+    {
+        $latest = LatestNews::findOrFail($id);
+        $latest->delete();
+        return redirect()->back();
+    }
+
     public function storeRecommendNews(Request $request, $id)
     {
         RecommendNews::create([
@@ -48,11 +55,11 @@ class ManageContentController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroyRecommendNews(string $id)
     {
-        //
+        $recommend = RecommendNews::findOrFail($id);
+        $recommend->delete();
+        return redirect()->back();
     }
+
 }

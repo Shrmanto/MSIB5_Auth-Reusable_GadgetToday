@@ -69,9 +69,11 @@ Route::middleware(['web', 'auth'])->group(function () {
             Route::prefix('Manage-Content')->group(function () {
                 Route::get('/latest-news', [ManageContentController::class, 'LatestNews'])->name('latest-news');
                 Route::post('/latest-news/{id}', [ManageContentController::class, 'storeLatestNews'])->name('latest-news.add');
+                Route::delete('/latest-news/delete/{id}', [ManageContentController::class, 'destroyLatestNews'])->name('latest-news.delete');
 
                 Route::get('/recommend-news', [ManageContentController::class, 'RecommendNews'])->name('recommend-news');
                 Route::post('/recommend-news/{id}', [ManageContentController::class, 'storeRecommendNews'])->name('recommend-news.add');
+                Route::delete('/recommend-news/delete/{id}', [ManageContentController::class, 'destroyRecommendNews'])->name('recommend-news.delete');
             });
 
         });

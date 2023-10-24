@@ -38,4 +38,4 @@
 </header>
 <!--  Header End -->
 
-@include('components.profile.profile')
+@include('user.components.profile.profile')

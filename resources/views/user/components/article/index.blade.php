@@ -1,4 +1,4 @@
-@extends('Userdashboard')
+@extends('user.dashboard')
 
 @section('content')
 <div id="main">
@@ -52,9 +52,9 @@
 
         <!-- </div> -->
     <!-- </div> -->
-    @include('article.modal.create')
-    @include('article.modal.update')
-    @include('article.modal.delete')
+    @include('user.components.article.modal.create')
+    @include('user.components.article.modal.update')
+    @include('user.components.article.modal.delete')
 
 </div>
 @endsection

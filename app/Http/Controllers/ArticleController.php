@@ -20,7 +20,7 @@ class ArticleController extends Controller
         $user = auth()->user();
         $article = Article::where('writer_id', $user->id)->get();
         $categories = Categories::all();
-        return view('article.index', compact('article', 'categories'));
+        return view('user.components.article.index', compact('article', 'categories'));
     }
 
     public function store(Request $request)

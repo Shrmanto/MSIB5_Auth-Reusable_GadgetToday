@@ -47,7 +47,7 @@ class ProfileController extends Controller
 
         // dd($user);
 
-        return redirect()->route('user.dashboard');
+        return redirect()->back();
     }
 
     /**
@@ -55,7 +55,26 @@ class ProfileController extends Controller
      */
     public function updateAdmin(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/role/user'), $imageName);
+            $user->image = $imageName;
+        }
+        $user->update();
+
+        // dd($user);
+
+        return redirect()->back();
     }
 
     /**

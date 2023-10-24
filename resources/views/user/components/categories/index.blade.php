@@ -1,4 +1,4 @@
-@extends('Userdashboard')
+@extends('user.dashboard')
 
 @section('content')
 <div id="main">

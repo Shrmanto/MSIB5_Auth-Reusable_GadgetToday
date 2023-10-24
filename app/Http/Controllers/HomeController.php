@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         $users = User::all();
         $categories = Categories::all();
-        return view('Userdashboard', compact('users', 'categories'));
+        return view('user.dashboard', compact('users', 'categories'));
     }
 
     public function admin()

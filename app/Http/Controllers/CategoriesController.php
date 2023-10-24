@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function indexUser()
     {
         $categories = Categories::all();
-        return view('categories.index', compact('categories'));
+        return view('user.components.categories.index', compact('categories'));
     }
 
     public function indexAdmin()
